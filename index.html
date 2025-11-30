@@ -1,12 +1,254 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>My Personal Site</title>
-</head>
-<body style="font-family: sans-serif; max-width: 800px; margin: 40px auto; padding: 0 10px;">
-    <h1>Hi, I'm Tyler!</h1>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tyler Venner</title>
+    <style>
+        :root {
+            --bg-color: #f6eddd;       /* Background */
+            --text-color: #333333;     /* Main text */
+            --accent-color: #2563eb;   /* Links and accents (Blue) */
+            --sub-text: #666666;       /* Dates and secondary text */
+            --font-main: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            --font-code: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace;
+        }
 
-    <h2>Contact</h2>
-    <p>Email: tylervenner2@gmail.com</p>
+        /* GLOBAL STYLES */
+        body {
+            font-family: var(--font-main);
+            color: var(--text-color);
+            background-color: var(--bg-color);
+            line-height: 1.6;
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        a { color: var(--accent-color); text-decoration: none; border-bottom: 1px dotted var(--accent-color); }
+        a:hover { border-bottom: 1px solid var(--accent-color); }
+
+        h1, h2, h3 { margin-top: 2.5rem; margin-bottom: 1rem; font-weight: 600; letter-spacing: -0.02em; }
+        h1 { font-size: 2.5rem; margin-top: 0; }
+        h2 { border-bottom: 1px solid #eee; padding-bottom: 10px; font-size: 1.5rem; }
+
+        .intro { margin-bottom: 3rem; }
+        
+        .role-entry, .project-entry { margin-bottom: 2rem; }
+        
+        .header-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+        }
+
+        .title { font-weight: bold; font-size: 1.1rem; }
+        .date { font-family: var(--font-code); color: var(--sub-text); font-size: 0.9rem; }
+        .tech-stack { font-family: var(--font-code); font-size: 0.85rem; color: var(--sub-text); margin-top: 5px; }
+
+        /* TAGS FOR SKILLS */
+        .tag {
+            display: inline-block;
+            background: #f4f4f5;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            margin-right: 5px;
+            font-family: var(--font-code);
+        }
+        
+        /* Mobile tweaks */
+        @media (max-width: 600px) {
+            .header-row { flex-direction: column; }
+            .date { margin-bottom: 5px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="intro">
+        <h1>Tyler Venner</h1>
+        <p>
+            Data Scientist <br>
+            Senior at UC Davis.
+        </p>
+        <p>
+            <a href="mailto:tylervenner2@gmail.com">Email</a> / 
+            <a href="https://github.com/TylerVenner">GitHub</a> / 
+            <a href="www.linkedin.com/in/tylervenner">LinkedIn</a>
+        </p>
+    </header>
+
+    <section>
+        <h2>About</h2>
+        <p>
+            Hi! Nice to meet you. I'd like to tell you a story about myself.
+        </p> 
+        <p>
+            Not that many know this about me, but I started at community college as a Mechanical Engineering major where I figured that I enjoyed mathamatical modeling. I did fine at my time there, but I wasn't truly curious
+            about my work. That changed when I transfered to UC Davis and took my first every statistics class. I was instantly curious and perhaps asked too many questions in class. But, my very kind professor encouraged me to ask more questions and explore further on my own time. 
+        </p>
+        <p>    
+            He showed me that deeper knowledge of statistics (and math) 
+            was something worth pursuing. After the quarter, we met for coffee and he walked me through what he does as a Data Scientist. This first interaction at my transition to UC Davis was deeply impactful for me. Dr. Bissell,
+            you are reading this, thank you.
+        </p>    
+        <p>
+            Now, I currently work as a Data Scientist at Davis Sensory Institute. There, I built a nice ML algorithm to uncover latent market structures from liking data. I'm also a senior at UC Davis,
+            studying Statistics & Data Science with a minor in math. I'm broadly interested in Causal Inference, ML theory, ML cloud infrastructure and math. 
+            Nowadays in my free time, I'm studying analysis, DSA, and ML theory.
+        </p>
+        <p>
+            When I'm not working or studying, you can find me in Japan, playing soccer, or eating ice cream.
+        </p>
+        
+    </section>
+
+    <section>
+        <h2>Experience</h2>
+
+        <div class="role-entry">
+            <div class="header-row">
+                <span class="title">Data Scientist</span>
+                <span class="date">July 2024 - Present</span>
+            </div>
+            <div class="company">Davis Sensory Institute</div>
+            <ul>
+                <li>I developed a novel stochastic ML unfolding algorithm (PULS) to uncover preference structures from liking data.</li>
+                <li>I really am grateful to everybody at Davis Sensory Institute. I grew a lot during my time developing PULS.</li>
+            </ul>
+        </div>
+
+        <div class="role-entry">
+            <div class="header-row">
+                <span class="title">ML Intern</span>
+                <span class="date">November 2025 - Present</span>
+            </div>
+            <div class="company">Questify</div>
+            <ul>
+                <li>Developing computer vision solutions.</li>
+            </ul>
+        </div>
+
+        <div class="role-entry">
+            <div class="header-row">
+                <span class="title">Assitant Pool Manager</span>
+                <span class="date">February 2023 - September 2023</span>
+            </div>
+            <div class="company">City of Davis</div>
+            <ul>
+                <li>I managed and oversaw daily pool operation and helped run and lead lifeguard training.</li>
+            </ul>
+        </div>
+
+        <div class="role-entry">
+            <div class="header-row">
+                <span class="title">Physics Tutor</span>
+                <span class="date">Augest 2022 - May 2023</span>
+            </div>
+            <div class="company">Sacramento City College</div>
+            <ul>
+                <li>I helped students understand mechanics and electromagnetism concepts.</li>
+            </ul>
+        </div>
+    </section>
+
+    <section>
+        <h2>Projects</h2>
+
+        <div class="project-entry">
+            <div class="header-row">
+                <span class="title">Mapping Economic Bias in the NBA</span>
+            </div>
+            
+            <p>
+                <strong>The Problem:</strong> It is often the case that econometric analyses often conclude with a wall of coefficients, a static list that confirms bias exists. 
+                This is technically correct, but it fails to reveal the underlying bias structure and how each player fits into that structure. 
+                Furthermore, applying standard models to the NBA leads to severe misspecification because deterministic contracts (Rookie Scale, Max Contract) distort free-market signals.
+            </p>
+            <p>
+                <strong>The Solution:</strong> I developed a Stratified Double Machine Learning framework. By strictly isolating free-market players to learn the true "price" of bias, 
+                I could counterfactually apply these valuations to the full league. I then fed these attributions into my own probabilistic dimension reduction model to interactively visualize the 
+                geometric topology of market inefficiency. Practically, this means we can visualize exactly how and where the NBA market systematically misprices players, not just that bias exists. 
+                On a side, my models suggest that Lebron James's compensation is strongly upward biased because of his seniority, accounting for performance.
+            </p>
+            
+            <div style="margin-bottom: 5px;">
+                <a href="pdfs/nba-economic-bias.pdf" target="_blank">[Read Technical Report (PDF)]</a>
+            </div>
+
+            <div class="tech-stack">JAX/Optax • Double ML • Causal Inference • Dimension Reduction • Non-convex Optimization</div>
+        </div>
+
+        <div class="project-entry">
+            <div class="header-row">
+                <span class="title">End-to-End Flight Forecasting System</span>
+            </div>
+            
+            <p>
+                <strong>The Problem:</strong> If you search online, you will not find many historical flight listings. You also will not find any many usful predictive tools.
+            </p>
+            <p>
+                <strong>The Solution:</strong> I architected a complete cloud-native system on AWS. I built the fully serverless ETL pipeline using Dockerized Lambda to automate data 
+                collection and construct a data lake in S3. Then, I developed a "Dual-Model" architecture: 
+                a regression model for market-level forecasting and a classification model to generate tactical "Buy/Wait" signals for individual flights.
+            </p>
+            
+            <div style="margin-bottom: 5px;">
+                <span style="font-family: var(--font-code); font-size: 0.85rem; color: var(--sub-text);">Reports:</span>
+                &nbsp;
+                <a href="pdfs/flight-data-etl.pdf" target="_blank">[Part 1: AWS ETL Architecture]</a>
+                &nbsp; • &nbsp; 
+                <a href="pdfs/flight-price-mlops.pdf" target="_blank">[Part 2: Model & MLOps]</a>
+            </div>
+
+            <div class="tech-stack">AWS (Lambda, S3, Athena) • Docker • LightGBM • MLOps</div>
+        </div>
+
+        <div class="project-entry">
+            <div class="header-row">
+                <span class="title">Interactive Causal Discovery App</span>
+            </div>
+            
+            <p>
+                <strong>The Problem:</strong> Being honest, I didn't really have a problem I wanted to solve going in. I was just always curious about the phrase "Correlation does not imply Causation". 
+                I always wondered "Ok, but what <em>can</em> we say about causality, if at all?" This project were the highlights of exploring that question. I used <em>Elements of Causal Inference</em> by Jonas Peters, Dominik Janzing, 
+                and Bernhard Schölkopf as my textbook.
+            </p>
+            <p>
+                <strong>The Solution:</strong> I built a interactive web application to simulate the PC Algorithm from scratch. It allows users to visualize how conditional independence 
+                testing can be used to recover causal graphs from observational data, demonstrating both the limitations and power of causal discovery.
+            </p>
+            
+            <div style="margin-bottom: 5px;">
+                <a href="https://tyler-causality.streamlit.app/" target="_blank">[Launch Interactive App]</a>
+            </div>
+
+            <div class="tech-stack">Streamlit • NetworkX • PC Algorithm • Causal Inference</div>
+        </div>
+
+        <div class="project-entry">
+            <div class="header-row">
+                <span class="title">AutoRep: Computer Vision Exercise Counter</span>
+            </div>
+            
+            <p>
+                <strong>The Problem:</strong> I'm a big fan of burpees. However, sometimes I find myself losing count of my reps because I'm focusing on my breathing or technique. Therefore, I wondered if
+                I could have the computer count for me! 
+            </p>
+            <p>
+                <strong>The Solution:</strong> I implemented a Pose Estimation system using MediaPipe. It is a finite state machine based on the geometry of body landmarks. This allowed the system to logically
+                group complex movement sequences into accurate, full-range-of-motion counts.
+            </p>
+            
+            <div style="margin-bottom: 5px;">
+                <a href="pdfs/autorep-vision.pdf" target="_blank">[Read Technical Report (PDF)]</a>
+            </div>
+
+            <div class="tech-stack">OpenCV • MediaPipe • Computer Vision</div>
+        </div>
+
+    </section>
+
 </body>
 </html>
