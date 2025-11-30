@@ -3,86 +3,183 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:title" content="Tyler Venner - Data Scientist">
+    <meta property="og:description" content="Portfolio of Tyler Venner. Specializing in Probabilistic Modeling, ML Systems, Causal Learning, and Computer Vision.">
+    <meta property="og:image" content="https://tylervenner.github.io/images/profile.jpg">
+    <meta property="og:url" content="https://tylervenner.github.io/">
+    <meta name="twitter:card" content="summary_large_image">
     <title>Tyler Venner</title>
     <style>
+        /* --- CSS VARIABLES --- */
         :root {
-            --bg-color: #f6eddd;       /* Background */
-            --text-color: #333333;     /* Main text */
-            --accent-color: #2563eb;   /* Links and accents (Blue) */
-            --sub-text: #666666;       /* Dates and secondary text */
+            --bg-color: #f6eddd;
+            --text-color: #333333;
+            --accent-color: #2563eb;   
+            --sub-text: #666666;
             --font-main: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
             --font-code: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace;
         }
 
-        /* GLOBAL STYLES */
+        /* --- GLOBAL STYLES --- */
+        html { scroll-behavior: smooth; } /* Enables smooth scrolling */
+
         body {
             font-family: var(--font-main);
             color: var(--text-color);
             background-color: var(--bg-color);
             line-height: 1.6;
-            max-width: 700px;
+            max-width: 750px;
             margin: 0 auto;
-            padding: 40px 20px;
+            padding: 60px 20px; /* Increased top padding */
+            position: relative; /* Needed for TOC positioning */
         }
 
-        a { color: var(--accent-color); text-decoration: none; border-bottom: 1px dotted var(--accent-color); }
+        a { color: var(--accent-color); text-decoration: none; border-bottom: 1px dotted var(--accent-color); transition: 0.2s; }
         a:hover { border-bottom: 1px solid var(--accent-color); }
 
-        h1, h2, h3 { margin-top: 2.5rem; margin-bottom: 1rem; font-weight: 600; letter-spacing: -0.02em; }
-        h1 { font-size: 2.5rem; margin-top: 0; }
-        h2 { border-bottom: 1px solid #eee; padding-bottom: 10px; font-size: 1.5rem; }
+        h1, h2, h3 { font-weight: 600; letter-spacing: -0.02em; }
+        h1 { font-size: 2.2rem; margin: 0 0 10px 0; }
+        h2 { margin-bottom: 1.5rem; font-size: 1.5rem; }
 
-        .intro { margin-bottom: 3rem; }
+        /* --- SEPARATORS (The "Subtle Lines") --- */
+        hr {
+            border: 0;
+            border-top: 2px solid #e0d8cb; /* Very subtle gray */
+            margin: 4rem 0; /* Lots of breathing room */
+        }
+
+        /* --- HEADER & PHOTO LAYOUT --- */
+        .intro {
+            position: relative; 
+            margin-bottom: 3rem;
+            min-height: 160px;  
+        }
+
+        .intro-text {
+            padding-right: 210px; 
+        }
+
+        .profile-pic {
+            position: absolute; 
+            top: 0;
+            right: 0;
+            width: 280px;
+            height: 280px;
+            border-radius: 50%;       
+            object-fit: cover;        
+            padding: 6px;             
+            background-color: white;  
+            border: 1px solid #e5e5e5;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05); 
+            z-index: 10; 
+        }
+
+        /* --- TABLE OF CONTENTS (RIGHT SIDE) --- */
+        .toc {
+            position: fixed;        /* Stays on screen while scrolling */
+            top: 100px;             /* Distance from top of window */
+            left: calc(50% + 420px);/* Center of screen + half width + margin */
+            width: 150px;
+            font-size: 1.0rem;
+            text-align: left;
+            display: none;          /* Hidden by default on small screens */
+        }
+
+        .toc ul { list-style: none; padding: 0; margin: 0; }
+        .toc li { margin-bottom: 10px; }
         
-        .role-entry, .project-entry { margin-bottom: 2rem; }
+        .toc a { 
+            color: #999; 
+            border: none; /* No underline for these links */
+            font-weight: 500;
+        }
+        
+        .toc a:hover, .toc a.active { color: var(--accent-color); }
+        .toc-label { 
+            font-family: var(--font-code); 
+            font-size: 0.75rem; 
+            text-transform: uppercase; 
+            letter-spacing: 1px; 
+            color: #bbb; 
+            margin-bottom: 10px; 
+            display: block;
+        }
+
+        /* Only show TOC if screen is wide enough (Desktop) */
+        @media (min-width: 1250px) {
+            .toc { display: block; }
+        }
+
+        /* --- SECTIONS --- */
+        .role-entry, .project-entry { margin-bottom: 3rem; }
         
         .header-row {
             display: flex;
             justify-content: space-between;
             align-items: baseline;
+            margin-bottom: 8px;
         }
 
-        .title { font-weight: bold; font-size: 1.1rem; }
-        .date { font-family: var(--font-code); color: var(--sub-text); font-size: 0.9rem; }
-        .tech-stack { font-family: var(--font-code); font-size: 0.85rem; color: var(--sub-text); margin-top: 5px; }
+        .title { font-weight: 600; font-size: 1.15rem; color: #111; }
+        .date { font-family: var(--font-code); color: var(--sub-text); font-size: 0.85rem; }
+        .tech-stack { font-family: var(--font-code); font-size: 0.8rem; color: var(--sub-text); margin-top: 8px; }
 
-        /* TAGS FOR SKILLS */
-        .tag {
-            display: inline-block;
-            background: #f4f4f5;
-            padding: 2px 8px;
-            border-radius: 4px;
-            font-size: 0.85rem;
-            margin-right: 5px;
-            font-family: var(--font-code);
-        }
+        .company { font-weight: 500; color: #555; margin-bottom: 10px; }
+
+        /* --- FOOTER --- */
+        footer { margin-top: 4rem; padding-top: 20px; font-size: 0.85rem; color: var(--sub-text); }
         
-        /* Mobile tweaks */
+        /* --- MOBILE RESPONSIVENESS --- */
         @media (max-width: 600px) {
-            .header-row { flex-direction: column; }
+            .intro { display: flex; flex-direction: column-reverse; align-items: center; text-align: center; }
+            .intro-text { padding-right: 0; }
+            .profile-pic { 
+                position: relative; 
+                margin-bottom: 20px; 
+                width: 140px; 
+                height: 140px; 
+            }
+            .header-row { flex-direction: column; align-items: flex-start; }
             .date { margin-bottom: 5px; }
+            hr { margin: 3rem 0; }
         }
     </style>
 </head>
+
 <body>
 
+    <nav class="toc">
+        <span class="toc-label">Contents</span>
+        <ul>
+            <li><a href="#about">About</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#projects">Projects</a></li>
+        </ul>
+    </nav>
+
     <header class="intro">
-        <h1>Tyler Venner</h1>
-        <p>
-            Data Scientist <br>
-            Senior at UC Davis.
-        </p>
-        <p>
-            <a href="mailto:tylervenner2@gmail.com">Email</a> / 
-            <a href="https://github.com/TylerVenner">GitHub</a> / 
-            <a href="www.linkedin.com/in/tylervenner">LinkedIn</a>
-        </p>
+        <div class="intro-text">
+            <h1>Tyler Venner</h1>
+            <p>
+                Data Scientist. <br>
+                Senior at UC Davis. <br>
+                Lifelong Learner.
+            </p>
+            <p style="font-family: var(--font-code); font-size: 0.9rem;">
+                    <a href="mailto:tylervenner2@gmail.com">Email</a> / 
+                    <a href="https://github.com/TylerVenner" target="_blank">GitHub</a> / 
+                    <a href="www.linkedin.com/in/tylervenner">LinkedIn</a> /
+                    <a href="pdfs/Tyler_Venner_Resume.pdf" target="_blank">Resume</a>
+            </p>
+        </div>
+
+        <img src="images/profile.jpg" alt="Tyler Venner" class="profile-pic">
     </header>
 
-    <section>
+    <section id="about">
         <h2>About</h2>
         <p>
-            Hi! Nice to meet you. I'd like to tell you a story about myself.
+            Hi! Nice to meet you. To introduce myself, I'd like to tell you a story.
         </p> 
         <p>
             Not that many know this about me, but I started at community college as a Mechanical Engineering major where I figured that I enjoyed mathamatical modeling. I did fine at my time there, but I wasn't truly curious
@@ -104,7 +201,7 @@
         
     </section>
 
-    <section>
+    <hr> <section id="experience">
         <h2>Experience</h2>
 
         <div class="role-entry">
@@ -153,7 +250,7 @@
         </div>
     </section>
 
-    <section>
+    <hr> <section id="projects">
         <h2>Projects</h2>
 
         <div class="project-entry">
